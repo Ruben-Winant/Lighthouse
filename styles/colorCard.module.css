@@ -1,0 +1,28 @@
+.ColorCardOuter{
+    display: flex;
+    align-items: flex-end;
+    box-shadow: 3px 3px 10px #888888;
+    border-radius: 5px;
+    width: 10rem;
+    height: 8.5rem;
+    cursor: pointer;
+}
+
+.ColorCardInfo{
+    height: 2.3rem;
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    background-color: #FFFFFF;
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.ColorCardInfo span {
+    color: #000000;
+}
+

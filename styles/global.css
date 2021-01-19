@@ -1,0 +1,170 @@
+html,
+body, textarea {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a, span {
+  color: #3E82F8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+p {
+  font-size: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  line-height: 1.15;
+}
+
+h1,
+.text-size-h1 {
+  margin: 0;
+  font-size: 3.05rem;
+}
+
+h2,
+.text-size-h2 { font-size: 2.44rem; }
+
+h3,
+.text-size-h3 { font-size: 1.95rem; }
+
+h4,
+.text-size-h4 { font-size: 1.56rem; }
+
+h5,
+.text-size-h5 { font-size: 1.25rem; }
+
+.text-caption { font-size: 0.8rem; }
+
+small,
+.text-small {
+  font-size: 0.64rem;
+}
+
+.nextButton {
+  background-color: #3E82F8;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #FFFFFF;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px #888888;
+  text-align: center;
+  max-width: 13rem;
+  display: block;
+  margin: 1rem 0 1rem 0;
+}
+
+.nextButton:hover {
+  background-color: #3771d4;
+  cursor: pointer;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color:#FFFFFF;
+  background: #3E82F8;
+}
+
+::selection {
+  color:#FFFFFF;
+  background: #3E82F8;
+}
+
+.contentContainer {
+  height: fit-content;
+  width: fit-content;
+  box-shadow: 12px 12px 25px #888888;
+  border-radius: 15px;
+  padding: 3.5rem 3.5rem 3.5rem 3.5rem;
+  position: relative;
+  background-color: #FFFFFF;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  justify-content: space-between;
+}
+
+.formError {
+  display: flex;
+  background-color: rgb(247, 41, 41);
+  border-radius: 5px;
+  display: none;
+}
+
+.formError p {
+  font-size: 1rem;
+  margin: 0.3rem 1.2rem 0.3rem 1.2rem;
+  color: #FFFFFF;
+}
+
+.formButtonRow {
+  margin-top: 2rem;
+  min-width: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.formButtonRow button {
+  min-width: 10rem;
+}
+
+.formInputRow {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.formInput {
+  display: flex;
+  border-radius: 3px;
+  border-color: #eeeeeed2;
+  border-width: 1px;
+  text-indent: 10px;
+  padding: 0.7rem 0rem 0.7rem 0rem;
+}
+
+.formInput:focus, .formTextArea:focus {
+  border-radius: 3px;
+  border-color: #3E82F8;
+  outline: none !important;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.formTextArea{
+  display: flex;
+  border-radius: 3px;
+  border-color: #eeeeeed2;
+  border-width: 1px;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
