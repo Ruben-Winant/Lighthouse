@@ -21,23 +21,21 @@ const BusinessVisionpage = () => {
           <span>vision</span>
         </h1>
         <p>That's a lovely name! What's the vision of your business?</p>
-        <form onSubmit={(e: FormEvent) => onSubmit(e)}>
-          <div className="formInputRow">
-            <textarea
-              className="formTextArea"
-              placeholder="Business vision"
-              rows={6}
-              required
-              value={businessVisionState}
-              onChange={(val: ChangeEvent<HTMLTextAreaElement>) =>
-                setBusinessVisionState(val.target.value)
-              }
-            />
-          </div>
-          <button type="submit" className="nextButton">
-            Next
-          </button>
-        </form>
+        <div className="formInputRow">
+          <textarea
+            className="formTextArea"
+            placeholder="Business vision"
+            rows={6}
+            required
+            value={businessVisionState}
+            onChange={(val: ChangeEvent<HTMLTextAreaElement>) =>
+              setBusinessVisionState(val.target.value)
+            }
+          />
+        </div>
+        <button onClick={onSubmit} type="submit" className="nextButton">
+          Next
+        </button>
       </section>
     </Layout>
   );

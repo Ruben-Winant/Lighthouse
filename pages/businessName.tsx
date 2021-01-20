@@ -22,23 +22,22 @@ const IndexPage = () => {
           <br /> your <span>business?</span>
         </h1>
         <p>Let start of with your name shall we?</p>
-        <form onSubmit={(e: FormEvent) => onSubmit(e)}>
-          <div className="formInputRow">
-            <input
-              className="formInput"
-              type="text"
-              placeholder="Business name"
-              required
-              value={businessNameState}
-              onChange={(val: ChangeEvent<HTMLInputElement>) =>
-                setBusinessnameState(val.target.value)
-              }
-            />
-          </div>
-          <button type="submit" className="nextButton">
-            Next
-          </button>
-        </form>
+
+        <div className="formInputRow">
+          <input
+            className="formInput"
+            type="text"
+            placeholder="Business name"
+            required
+            value={businessNameState}
+            onChange={(val: ChangeEvent<HTMLInputElement>) =>
+              setBusinessnameState(val.target.value)
+            }
+          />
+        </div>
+        <button onClick={onSubmit} type="submit" className="nextButton">
+          Next
+        </button>
       </section>
     </Layout>
   );
