@@ -1,7 +1,15 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { FormEvent } from "react";
 import Layout from "../components/Layout";
 
-const ForgotPasswordPage = () => (
+const ForgotPasswordPage = () => {
+  const router = useRouter();
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault;
+    router.push("/login");
+  };
+
   <Layout title="Lighthouse - Brand guide specialist">
     <section
       className="contentContainer"
@@ -22,12 +30,12 @@ const ForgotPasswordPage = () => (
             required
           />
         </div>
-        <button className="nextButton" type="submit">
+        <button onClick={onSubmit} className="nextButton" type="submit">
           Reset
         </button>
       </form>
     </section>
-  </Layout>
-);
+  </Layout>;
+};
 
 export default ForgotPasswordPage;

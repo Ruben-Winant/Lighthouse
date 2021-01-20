@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
-import styles from "../styles/index.module.css";
+// import styles from "../styles/index.module.css";
 
 const IndexPage = () => (
   <Layout title="Lighthouse - Brand guide specialist" displayBorder="block">

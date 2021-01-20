@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import styles from "../styles/businessValues.module.css";
