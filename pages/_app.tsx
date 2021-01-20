@@ -8,7 +8,6 @@ import "../styles/global.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const businessContextValue = useBusinessContextValue();
-  console.log(businessContextValue);
   return (
     <BusinessContext.Provider value={businessContextValue}>
       <Component {...pageProps} />

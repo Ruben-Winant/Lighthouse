@@ -4,14 +4,13 @@
     justify-content: space-between;
 }
 
-.selectFontContainer p,  .selectFontContainer h3 {
-    margin: 4% 0 0 0 ;
+.selectFontContainer p,  .selectFontContainer h3, .selectFontContainer h1 {
+    margin: 0 3rem 0 0 ;
 }
 
-
 .selectFontContainerRow {
-    display: flex;
-    margin-left: 5rem;
+    display: flex; 
+    align-items: center;
 }
 
 .selectFontContainerRow span {
@@ -30,4 +29,26 @@
 .selectFontContainerRow span:hover {
     border: 3px solid #3E82F8;
     color: #3E82F8;
+}
+
+.sampleInputRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sampleInputRow h5 {
+    margin-right: 1rem;
+}
+
+.selectFontContainerRow select {
+    border-radius: 5px;
+    height: 2.5rem;
+    border-width: 1px;
+    appearance: none;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 160px;
+    background-position-y: 8px;
 }
