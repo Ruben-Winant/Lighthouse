@@ -11,7 +11,7 @@ const LoginPage = () => {
     //check for correct sign in credentials
     //log user in
     //return to home
-    //if false, display error message
+    //if false, display error message.
   };
 
   return (
