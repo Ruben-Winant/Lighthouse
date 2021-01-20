@@ -24,9 +24,17 @@ const FileInputCard = ({
   const onItemAddedHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (e !== null) {
       //! add item to context
-      setItemSrc(URL.createObjectURL(e.currentTarget.files[0]));
+      setItemSrc(
+        URL.createObjectURL(
+          e.currentTarget.files ? e.currentTarget.files[0] : null
+        )
+      );
       handleSubmit
-        ? handleSubmit(URL.createObjectURL(e.currentTarget.files[0]))
+        ? handleSubmit(
+            URL.createObjectURL(
+              e.currentTarget.files ? e.currentTarget.files[0] : null
+            )
+          )
         : null;
       setItemPresent(true);
     } else {
