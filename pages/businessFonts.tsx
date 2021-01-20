@@ -57,7 +57,7 @@ const IndexPage = () => {
           </div>
         </div>
 
-        <button type="submit" className="nextButton">
+        <button onClick={onSubmit} type="submit" className="nextButton">
           Next
         </button>
       </section>
