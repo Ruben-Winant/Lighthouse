@@ -1,6 +1,5 @@
 import { FontType, GoogleFontStyles } from "../interfaces";
 import styles from "../styles/businessFonts.module.css";
-import WebFont from "webfontloader";
 import { useState } from "react";
 
 interface FontSelectorProps {
@@ -19,10 +18,12 @@ const FontSelector = ({
   const [italic, setItalic] = useState<boolean>(false);
 
   const onHandleFontChange = (newFont: string) => {
-    WebFont.load({
-      google: {
-        families: [newFont],
-      },
+    import("webfontloader").then((WebFontLoader) => {
+      WebFontLoader.load({
+        google: {
+          families: [newFont],
+        },
+      });
     });
 
     setSelectedFont(newFont);
