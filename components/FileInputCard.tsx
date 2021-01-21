@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import styles from "../styles/FileInputCard.module.css";
 import Image from "next/image";
 import { FileType } from "../interfaces/index";
@@ -8,7 +8,9 @@ interface FileInputProps {
   startWithImage: boolean;
   startImage?: any;
   handleSubmit?: Function;
+  handleDelete?: Function;
   inputOnly?: boolean;
+  title: string;
 }
 
 const FileInputCard = ({
@@ -17,13 +19,14 @@ const FileInputCard = ({
   startImage,
   handleSubmit,
   inputOnly = false,
+  title,
+  handleDelete,
 }: FileInputProps) => {
   const [itemSrc, setItemSrc] = useState(startImage ? startImage : null);
   const [itemPresent, setItemPresent] = useState<boolean>(startWithImage);
 
   const onItemAddedHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (e !== null) {
-      //! add item to context
       setItemSrc(
         URL.createObjectURL(
           e.currentTarget.files ? e.currentTarget.files[0] : null
@@ -33,7 +36,8 @@ const FileInputCard = ({
         ? handleSubmit(
             URL.createObjectURL(
               e.currentTarget.files ? e.currentTarget.files[0] : null
-            )
+            ),
+            type
           )
         : null;
       setItemPresent(true);
@@ -44,10 +48,10 @@ const FileInputCard = ({
 
   return (
     <div className={styles.logoInnerInputContainer}>
-      <h3>{type}</h3>
+      <h3>{title}</h3>
       <label
         className={styles.logoFileContainer}
-        htmlFor="mainLogo"
+        htmlFor={"LogoType" + type}
         style={{ display: itemPresent && !inputOnly ? "none" : "flex" }}
       >
         <Image
@@ -61,7 +65,7 @@ const FileInputCard = ({
         </p>
       </label>
       <input
-        id="mainLogo"
+        id={"LogoType" + type}
         hidden
         type="file"
         accept=".svg"
@@ -77,8 +81,9 @@ const FileInputCard = ({
         className={styles.logoInnerInputContainerRemove}
         style={{ display: itemPresent && !inputOnly ? "flex" : "none" }}
         onClick={() => (
-          //! remove item from context
-          setItemSrc("" as any), setItemPresent(false)
+          handleDelete ? handleDelete(type) : null,
+          setItemSrc("" as any),
+          setItemPresent(false)
         )}
       >
         <span>

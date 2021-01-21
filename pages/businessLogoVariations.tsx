@@ -1,11 +1,16 @@
-import { FormEvent } from "react";
+import { FormEvent, useContext, useState } from "react";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import FileInputCard from "../components/FileInputCard";
 import { FileType } from "../interfaces";
+import { BusinessContext } from "../context/businessContext";
 
 const BusinessLogoVariantionsPage = () => {
   const router = useRouter();
+  const { businessLogo } = useContext(BusinessContext);
+  const [customWhiteLogo, setCustomWhiteLogo] = useState<string>("");
+  const [customWhiteLogomark, setCustomWhiteLogomark] = useState<string>("");
+  const [customWhiteAppicon, setCustomWhiteAppicon] = useState<string>("");
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault;
@@ -23,8 +28,12 @@ const BusinessLogoVariantionsPage = () => {
           logomark and icon. If one of them isn't the way it should be, remove
           it and upload your own.
         </p>
-        //! put image src from context in startImage!
-        <FileInputCard type={FileType.Logo} startWithImage={true} />
+        <FileInputCard
+          title=""
+          type={FileType.Logo}
+          startWithImage={true}
+          startImage={businessLogo}
+        />
         <button onClick={onSubmit} type="submit" className="nextButton">
           Next
         </button>

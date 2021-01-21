@@ -35,7 +35,13 @@ const IndexPage = () => {
             }
           />
         </div>
-        <button onClick={onSubmit} type="submit" className="nextButton">
+        <button
+          onClick={onSubmit}
+          type="submit"
+          className="nextButton"
+          disabled={businessNameState ? false : true}
+          style={{ backgroundColor: businessNameState ? "" : "#888888" }}
+        >
           Next
         </button>
       </section>

@@ -5,7 +5,7 @@ import styles from "../styles/businessValues.module.css";
 import { BusinessContext } from "../context/businessContext";
 
 const BusinessValuesPage = () => {
-  const { businessName } = useContext(BusinessContext);
+  const { businessName, handleBusinessValues } = useContext(BusinessContext);
   const router = useRouter();
   const [currBValue, setCurrBValue] = useState<string>("");
   const [bValues, setBValues] = useState<string[]>([]);
@@ -39,6 +39,7 @@ const BusinessValuesPage = () => {
   };
 
   const onSubmit = () => {
+    handleBusinessValues(bValues);
     router.push("/businessLogo");
   };
 
@@ -76,12 +77,16 @@ const BusinessValuesPage = () => {
 
         {bValues.length > 0 ? (
           <div>
-            <span>
-              <b>[business's] values</b>
-            </span>
+            <p style={{ marginBottom: 10 }}>
+              <b>
+                <span>{businessName}'s </span>
+                values
+              </b>
+            </p>
+
             <div className={styles.businesValuesRow}>
               {bValues.map((val) => (
-                <div>
+                <div key={"bv" + val}>
                   {val}
                   <button
                     onClick={() => handleDeleteValueClick(val)}

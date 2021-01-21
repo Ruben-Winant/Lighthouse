@@ -4,22 +4,28 @@ import { useRouter } from "next/router";
 import { BusinessContext } from "../context/businessContext";
 
 const BusinessVisionpage = () => {
-  const { businessName } = useContext(BusinessContext);
+  const { businessName, handleBusinessVision } = useContext(BusinessContext);
   const router = useRouter();
   const [businessVisionState, setBusinessVisionState] = useState<string>("");
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault;
+    handleBusinessVision(businessVisionState);
     router.push("/businessValues");
   };
 
   return (
     <Layout title="Lighthouse - Brand guide specialist">
       <section className="contentContainer">
-        <h1>
-          {businessName ? "Tell us about " + businessName + "'s " : "Business "}
-          <span>vision</span>
-        </h1>
+        {businessName ? (
+          <h1>
+            Tell us about <span>{businessName}'s vision</span>
+          </h1>
+        ) : (
+          <h1>
+            Tell us about your <span>business's vision</span>
+          </h1>
+        )}
         <p>That's a lovely name! What's the vision of your business?</p>
         <div className="formInputRow">
           <textarea
@@ -33,7 +39,13 @@ const BusinessVisionpage = () => {
             }
           />
         </div>
-        <button onClick={onSubmit} type="submit" className="nextButton">
+        <button
+          onClick={onSubmit}
+          type="submit"
+          className="nextButton"
+          disabled={businessVisionState ? false : true}
+          style={{ backgroundColor: businessVisionState ? "" : "#888888" }}
+        >
           Next
         </button>
       </section>

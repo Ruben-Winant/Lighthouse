@@ -1,8 +1,8 @@
 export enum FileType {
-  Logo = "Logo",
-  Logomark = "Logomark",
-  Icon = "App icon",
-  BusinessIcon = "Add icon"
+  Logo,
+  Logomark,
+  Icon,
+  BusinessIcon,
 }
 
 export enum FontType {
