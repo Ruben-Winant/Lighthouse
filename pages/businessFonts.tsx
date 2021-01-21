@@ -1,12 +1,23 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import styles from "../styles/businessFonts.module.css";
+import { FontType, GoogleFontStyles } from "../interfaces";
 import FontSelector from "../components/FontSelector";
 
 const IndexPage = () => {
   const router = useRouter();
+  const [googleFonts, setGoogleFonts] = useState<GoogleFontStyles>();
   const [sentence, setSentence] = useState<string>("Example sentence");
+
+  useEffect(() => {
+    fetch(
+      "https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=" +
+        process.env.GOOGLEAPIKEY
+    )
+      .then((res) => res.json())
+      .then((fonts) => setGoogleFonts(fonts));
+  }, []);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault;
@@ -25,12 +36,27 @@ const IndexPage = () => {
           <input
             className="formInput"
             value={sentence}
+            style={{ width: 250 }}
             onChange={(val) => setSentence(val.target.value)}
           />
         </div>
 
         <div style={{ marginBottom: 50 }}>
-          <FontSelector example={sentence} />
+          <FontSelector
+            googleFonts={googleFonts}
+            example={sentence}
+            fontType={FontType.Header}
+          />
+          <FontSelector
+            googleFonts={googleFonts}
+            example={sentence}
+            fontType={FontType.SubHeader}
+          />
+          <FontSelector
+            googleFonts={googleFonts}
+            example={sentence}
+            fontType={FontType.Body}
+          />
         </div>
         <button onClick={onSubmit} type="submit" className="nextButton">
           Next
