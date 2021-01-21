@@ -38,6 +38,7 @@ const BusinessIconPage = () => {
         </p>
         <div className={styles.iconOuterContainer}>
           <FileInputCard
+            title="Business icons"
             startWithImage={false}
             type={FileType.BusinessIcon}
             handleSubmit={onIconAdded}
