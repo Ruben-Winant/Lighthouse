@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styles from "../styles/FileInputCard.module.css";
 import Image from "next/image";
 import { FileType } from "../interfaces/index";
@@ -72,10 +72,11 @@ const FileInputCard = ({
         onChange={(e) => onItemAddedHandler(e)}
         multiple={false}
       />
-      <img
-        src={itemSrc}
+      <object
+        data={itemSrc}
         className={styles.mainLogo}
         style={{ display: itemPresent && !inputOnly ? "flex" : "none" }}
+        type="image/svg+xml"
       />
       <div
         className={styles.logoInnerInputContainerRemove}
