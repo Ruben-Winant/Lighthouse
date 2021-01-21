@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useContext } from "react";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import FileInputCard from "../components/FileInputCard";
@@ -8,9 +8,9 @@ import { BusinessContext } from "../context/businessContext";
 const BusinessLogoVariantionsPage = () => {
   const router = useRouter();
   const { businessLogo } = useContext(BusinessContext);
-  const [customWhiteLogo, setCustomWhiteLogo] = useState<string>("");
-  const [customWhiteLogomark, setCustomWhiteLogomark] = useState<string>("");
-  const [customWhiteAppicon, setCustomWhiteAppicon] = useState<string>("");
+  // const [customWhiteLogo, setCustomWhiteLogo] = useState<string>("");
+  // const [customWhiteLogomark, setCustomWhiteLogomark] = useState<string>("");
+  // const [customWhiteAppicon, setCustomWhiteAppicon] = useState<string>("");
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault;
