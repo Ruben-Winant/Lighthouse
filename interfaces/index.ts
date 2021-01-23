@@ -3,6 +3,12 @@ export enum FileType {
   Logomark,
   Icon,
   BusinessIcon,
+  LogoWhite,
+  LogoBlack,
+  LogomarkWhite,
+  LogomarkDark,
+  IconWhite,
+  IconBlack
 }
 
 export enum FontType {

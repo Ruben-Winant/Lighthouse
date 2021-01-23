@@ -1,15 +1,15 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import ColorCard from "../components/ColorCard";
+import { BusinessContext } from "../context/businessContext";
 
 const BusinessColorsPage = () => {
   const router = useRouter();
+  // const { businessLogo } = useContext(BusinessContext);
   const [colorList, setColorList] = useState([""]);
 
-  useEffect(() => {
-    //loop over context colors
-  }, []);
+  useEffect(() => {}, []);
 
   const onColorListItemChanged = (currentColor: string, hex: string) => {
     colorList[colorList.indexOf(currentColor)] = hex;
@@ -41,6 +41,7 @@ const BusinessColorsPage = () => {
         >
           {colorList.map((col) => (
             <ColorCard
+              key={col}
               startColor={col}
               onColorItemChange={onColorListItemChanged}
             />
