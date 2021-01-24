@@ -141,11 +141,11 @@ const FileInputCard = ({
 
       <img
         id={"SVGobject" + type}
-        //src={`data:image/svg+xml;base64,${btoa(itemSrc)}`}
-        src={`data:image/svg+xml;base64,${Buffer.from(
+        src={`data:image/svg+xml;base64,${btoa(itemSrc)}`}
+        /*src={`data:image/svg+xml;base64,${Buffer.from(
           itemSrc,
           "binary"
-        ).toString("base64")}`}
+        ).toString("base64")}`}*/
         alt={type.toString()}
         className={styles.mainLogo}
         style={{
