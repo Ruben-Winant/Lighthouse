@@ -56,7 +56,11 @@ const BusinessIconPage = () => {
                   onClick={() => removeIcon(icon)}
                 >
                   <img
-                    src={`data:image/svg+xml;base64,${btoa(icon)}`}
+                    //src={`data:image/svg+xml;base64,${btoa(icon)}`}
+                    src={`data:image/svg+xml;base64,${Buffer.from(
+                      icon,
+                      "binary"
+                    ).toString("base64")}`}
                     width={40}
                     height={40}
                   />
