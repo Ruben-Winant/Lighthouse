@@ -9,8 +9,14 @@ export interface BusinessContextData {
   businessLogoMark?: string;
   businessAppIcon?: string;
   headerFont: string;
+  headerFontItalic: boolean;
+  headerFontBold: boolean;
   subheaderFont: string;
+  subheaderFontItalic: boolean;
+  subheaderFontBold: boolean;
   bodyFont: string;
+  bodyFontItalic: boolean;
+  bodyFontBold: boolean;
   businessLogoVarWhiteCustom?: string;
   businessLogoMarkVarWhiteCustom?: string;
   businessAppIconVarWhiteCustom?: string;
@@ -26,6 +32,12 @@ export interface BusinessContextData {
   handleBusinessLogo: (src: string) => void;
   handleBusinessLogoMark: (src: string) => void;
   handleBusinessAppIcon: (src: string) => void;
+  handleHeaderFontItalic: (italic: boolean) => void;
+  handleSubheaderFontItalic: (italic: boolean) => void;
+  handleBodyFontItalic: (italic: boolean) => void;
+  handleHeaderFontBold: (bold: boolean) => void;
+  handleSubheaderFontBold: (bold: boolean) => void;
+  handleBodyFontBold: (bold: boolean) => void;
   handleHeaderFont: (font: string) => void;
   handleSubheaderFont: (font: string) => void;
   handleBodyFont: (font: string) => void;
@@ -48,8 +60,14 @@ export const businessContextDefaultValue: BusinessContextData = {
   businessLogoMark: "",
   businessAppIcon: "",
   headerFont: "",
+  headerFontItalic: false,
+  headerFontBold: false,
   subheaderFont: "",
+  subheaderFontItalic: false,
+  subheaderFontBold: false,
   bodyFont: "",
+  bodyFontItalic: false,
+  bodyFontBold: false,
   businessLogoVarWhiteCustom: "",
   businessLogoMarkVarWhiteCustom: "",
   businessAppIconVarWhiteCustom: "",
@@ -65,6 +83,12 @@ export const businessContextDefaultValue: BusinessContextData = {
   handleBusinessLogo: () => null,
   handleBusinessLogoMark: () => null,
   handleBusinessAppIcon: () => null,
+  handleHeaderFontItalic: () => null,
+  handleSubheaderFontItalic: () => null,
+  handleBodyFontItalic: () => null,
+  handleHeaderFontBold: () => null,
+  handleSubheaderFontBold: () => null,
+  handleBodyFontBold: () => null,
   handleHeaderFont: () => null,
   handleSubheaderFont: () => null,
   handleBodyFont: () => null,
@@ -94,6 +118,14 @@ export function useBusinessContextValue(): BusinessContextData {
   const [headerFont, setHeaderFont] = useState<string>("");
   const [subheaderFont, setSubheaderFont] = useState<string>("");
   const [bodyFont, setBodyFont] = useState<string>("");
+  const [headerFontItalic, setHeaderFontItalic] = useState<boolean>(false);
+  const [subheaderFontItalic, setSubheaderFontItalic] = useState<boolean>(
+    false
+  );
+  const [bodyFontItalic, setBodyFontItalic] = useState<boolean>(false);
+  const [headerFontBold, setHeaderFontBold] = useState<boolean>(false);
+  const [subheaderFontBold, setSubheaderFontBold] = useState<boolean>(false);
+  const [bodyFontBold, setBodyFontBold] = useState<boolean>(false);
   const [
     businessLogoVarWhiteCustom,
     setBusinessLogoVarWhiteCustom,
@@ -149,6 +181,24 @@ export function useBusinessContextValue(): BusinessContextData {
   const handleBodyFont = (value: string) => {
     setBodyFont(value);
   };
+  const handleHeaderFontItalic = (italic: boolean) => {
+    setHeaderFontItalic(italic);
+  };
+  const handleSubheaderFontItalic = (italic: boolean) => {
+    setSubheaderFontItalic(italic);
+  };
+  const handleBodyFontItalic = (italic: boolean) => {
+    setBodyFontItalic(italic);
+  };
+  const handleHeaderFontBold = (bold: boolean) => {
+    setHeaderFontBold(bold);
+  };
+  const handleSubheaderFontBold = (bold: boolean) => {
+    setSubheaderFontBold(bold);
+  };
+  const handleBodyFontBold = (bold: boolean) => {
+    setBodyFontBold(bold);
+  };
   const handleBusinessLogoVarWhiteCustom = (src: string) => {
     setBusinessLogoVarWhiteCustom(src);
   };
@@ -184,6 +234,12 @@ export function useBusinessContextValue(): BusinessContextData {
     headerFont,
     subheaderFont,
     bodyFont,
+    headerFontItalic,
+    subheaderFontItalic,
+    bodyFontItalic,
+    headerFontBold,
+    subheaderFontBold,
+    bodyFontBold,
     businessLogoVarWhiteCustom,
     businessLogoMarkVarWhiteCustom,
     businessAppIconVarWhiteCustom,
@@ -201,6 +257,12 @@ export function useBusinessContextValue(): BusinessContextData {
     handleHeaderFont,
     handleSubheaderFont,
     handleBodyFont,
+    handleHeaderFontItalic,
+    handleSubheaderFontItalic,
+    handleBodyFontItalic,
+    handleHeaderFontBold,
+    handleSubheaderFontBold,
+    handleBodyFontBold,
     handleBusinessLogoVarWhiteCustom,
     handleBusinessLogoMarkVarWhiteCustom,
     handleBusinessAppIconVarWhiteCustom,

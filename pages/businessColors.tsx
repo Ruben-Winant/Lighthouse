@@ -6,10 +6,19 @@ import { BusinessContext } from "../context/businessContext";
 
 const BusinessColorsPage = () => {
   const router = useRouter();
-  // const { businessLogo } = useContext(BusinessContext);
+  const { businessLogo, handleBusinessColors } = useContext(BusinessContext);
   const [colorList, setColorList] = useState([""]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const colorRegex = new RegExp(/(#[a-zA-Z0-9]{6})/gm);
+    let svgColors = businessLogo.match(colorRegex) as string[];
+
+    svgColors = svgColors.filter(
+      (value, index, self) => self.indexOf(value) === index
+    );
+    svgColors = svgColors.filter((value) => value !== "");
+    setColorList(svgColors);
+  }, []);
 
   const onColorListItemChanged = (currentColor: string, hex: string) => {
     colorList[colorList.indexOf(currentColor)] = hex;
@@ -18,6 +27,7 @@ const BusinessColorsPage = () => {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault;
+    handleBusinessColors(colorList);
     router.push("/businessIcons");
   };
 

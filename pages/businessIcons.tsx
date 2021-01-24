@@ -1,12 +1,14 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import FileInputCard from "../components/FileInputCard";
 import { FileType } from "../interfaces";
 import styles from "../styles/businessIcons.module.css";
+import { BusinessContext } from "../context/businessContext";
 
 const BusinessIconPage = () => {
   const router = useRouter();
+  const { handleBusinessIcons } = useContext(BusinessContext);
   const [addedIcons, setAddedIcons] = useState<string[]>([]);
 
   const removeIcon = (iconSrc: string) => {
@@ -23,6 +25,7 @@ const BusinessIconPage = () => {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault;
+    handleBusinessIcons(addedIcons);
     router.push("/businessFonts");
   };
 
@@ -52,7 +55,11 @@ const BusinessIconPage = () => {
                   className={styles.iconItem}
                   onClick={() => removeIcon(icon)}
                 >
-                  <img src={icon} width={40} height={40} />
+                  <img
+                    src={`data:image/svg+xml;base64,${btoa(icon)}`}
+                    width={40}
+                    height={40}
+                  />
                 </div>
               ))}
             </div>

@@ -6,12 +6,18 @@ interface FontSelectorProps {
   googleFonts?: GoogleFontStyles;
   fontType: FontType;
   example: string;
+  handleChange: Function;
+  handleBold: Function;
+  handleItalic: Function;
 }
 
 const FontSelector = ({
   example,
   googleFonts,
   fontType,
+  handleChange,
+  handleBold,
+  handleItalic,
 }: FontSelectorProps) => {
   const [selectedFont, setSelectedFont] = useState<string>("Poppins");
   const [bold, setBold] = useState<boolean>(false);
@@ -27,6 +33,17 @@ const FontSelector = ({
     });
 
     setSelectedFont(newFont);
+    handleChange(newFont, fontType);
+  };
+
+  const handleBoldChange = (bold: boolean) => {
+    setBold(bold);
+    handleBold(bold, fontType);
+  };
+
+  const handleItalicChange = (italic: boolean) => {
+    setItalic(italic);
+    handleItalic(italic, fontType);
   };
 
   const displaySentence = () => {
@@ -101,13 +118,13 @@ const FontSelector = ({
             }}
           >
             <span
-              onClick={() => setBold(!bold)}
+              onClick={() => handleBoldChange(!bold)}
               style={{ border: bold ? "3px solid #000" : "none" }}
             >
               <b>𝐁</b>
             </span>
             <span
-              onClick={() => setItalic(!italic)}
+              onClick={() => handleItalicChange(!italic)}
               style={{ border: italic ? "3px solid #000" : "none" }}
             >
               <b>𝐼</b>
