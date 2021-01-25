@@ -35,9 +35,7 @@
 .logoInnerInputContainerRemove {
     display: flex;
     padding: 0.5rem;
-    justify-content: flex-end;
-}
-
-.logoInnerInputContainerRemove :hover{
+    justify-content: flex-end; 
     cursor: pointer;
 }
+

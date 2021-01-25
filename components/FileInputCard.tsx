@@ -31,7 +31,7 @@ const FileInputCard = ({
     const convertToWhite = (svg: any) => {
       //decoding from base64 to string
       var data = svg.src.split("base64,")[1];
-      var decoSvg = atob(data);
+      const decoSvg = Buffer.from(data, "base64").toString();
 
       //change props of svg
       var parser = new DOMParser();
@@ -42,15 +42,20 @@ const FileInputCard = ({
       var groups = doc.getElementsByTagName("g");
       Array.from(groups).forEach((g) => (g.style.fill = "#FFFFFF"));
 
-      //set updated file as src
-      setItemSrc(doc.getElementsByTagName("svg")[0].outerHTML);
-      handleSubmit ? handleSubmit(svg, type) : null;
+      //encode result and set as src
+      const encodeSvg = `data:image/svg+xml;base64,${Buffer.from(
+        doc.getElementsByTagName("svg")[0].outerHTML,
+        "binary"
+      ).toString("base64")}`;
+
+      setItemSrc(encodeSvg);
+      handleSubmit ? handleSubmit(encodeSvg, type) : null;
     };
 
     const convertToBlack = (svg: any) => {
       //decoding from base64 to string
       var data = svg.src.split("base64,")[1];
-      var decoSvg = atob(data);
+      const decoSvg = Buffer.from(data, "base64").toString();
 
       //change props of svg
       var parser = new DOMParser();
@@ -61,9 +66,14 @@ const FileInputCard = ({
       var groups = doc.getElementsByTagName("g");
       Array.from(groups).forEach((g) => (g.style.fill = "#000000"));
 
-      //set updated file as src
-      setItemSrc(doc.getElementsByTagName("svg")[0].outerHTML);
-      handleSubmit ? handleSubmit(svg, type) : null;
+      //encode result and set as src
+      const encodeSvg = `data:image/svg+xml;base64,${Buffer.from(
+        doc.getElementsByTagName("svg")[0].outerHTML,
+        "binary"
+      ).toString("base64")}`;
+
+      setItemSrc(encodeSvg);
+      handleSubmit ? handleSubmit(encodeSvg, type) : null;
     };
 
     //handlers for logo variants
@@ -101,8 +111,14 @@ const FileInputCard = ({
         var parser = new DOMParser();
         var doc = parser.parseFromString(svgData as string, "image/svg+xml");
         var svg = doc.getElementsByTagName("svg")[0].outerHTML.toString();
-        setItemSrc(svg);
-        handleSubmit ? handleSubmit(svg, type) : null;
+
+        const encodeSvg = `data:image/svg+xml;base64,${Buffer.from(
+          svg,
+          "binary"
+        ).toString("base64")}`;
+
+        setItemSrc(encodeSvg);
+        handleSubmit ? handleSubmit(encodeSvg, type) : null;
       };
       reader.readAsText(e.currentTarget.files[0]);
       setItemPresent(true);
@@ -141,12 +157,8 @@ const FileInputCard = ({
 
       <img
         id={"SVGobject" + type}
-        //src={`data:image/svg+xml;base64,${btoa(itemSrc)}`}
-        src={`data:image/svg+xml;base64,${Buffer.from(
-          itemSrc,
-          "binary"
-        ).toString("base64")}`}
-        alt={type.toString()}
+        src={itemSrc}
+        alt={"SVGobject" + type.toString()}
         className={styles.mainLogo}
         style={{
           overflow: "visible",

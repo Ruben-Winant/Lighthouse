@@ -5,11 +5,13 @@ import { ChromePicker } from "react-color";
 interface colorCardProps {
   startColor: string;
   onColorItemChange: Function;
+  onRemove: Function;
 }
 
 const colorCard = ({
   startColor = "#FFFFFF",
   onColorItemChange,
+  onRemove,
 }: colorCardProps) => {
   const [currColor, setColor] = useState(startColor);
   const [showPicker, setShowPicker] = useState(false);
@@ -19,7 +21,6 @@ const colorCard = ({
       style={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-start",
         alignItems: "center",
         flexWrap: "wrap",
       }}
@@ -33,6 +34,20 @@ const colorCard = ({
           <span>Hex: {currColor}</span>
         </div>
       </div>
+
+      <span
+        onClick={() => {
+          onRemove(currColor);
+        }}
+        style={{
+          marginTop: -10,
+          cursor: "pointer",
+          width: 150,
+          textAlign: "right",
+        }}
+      >
+        Remove
+      </span>
 
       <div style={{ marginBottom: 25, display: showPicker ? "flex" : "none" }}>
         <ChromePicker

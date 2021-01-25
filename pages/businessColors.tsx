@@ -11,7 +11,11 @@ const BusinessColorsPage = () => {
 
   useEffect(() => {
     const colorRegex = new RegExp(/(#[a-zA-Z0-9]{6})/gm);
-    let svgColors = businessLogo.match(colorRegex) as string[];
+
+    //decode
+    var data = businessLogo.split("base64,")[1];
+    const decoSvg = Buffer.from(data, "base64").toString();
+    let svgColors = decoSvg.match(colorRegex) as string[];
 
     svgColors = svgColors.filter(
       (value, index, self) => self.indexOf(value) === index
@@ -19,6 +23,10 @@ const BusinessColorsPage = () => {
     svgColors = svgColors.filter((value) => value !== "");
     setColorList(svgColors);
   }, []);
+
+  const onColorChooserDeleted = (currColor: string) => {
+    setColorList(colorList.filter((val) => val !== currColor));
+  };
 
   const onColorListItemChanged = (currentColor: string, hex: string) => {
     colorList[colorList.indexOf(currentColor)] = hex;
@@ -45,27 +53,36 @@ const BusinessColorsPage = () => {
         <div
           style={{
             display: "flex",
-            justifyContent: "space-around",
             flexWrap: "wrap",
           }}
         >
           {colorList.map((col) => (
             <ColorCard
-              key={col}
+              key={col + "key"}
               startColor={col}
               onColorItemChange={onColorListItemChanged}
+              onRemove={onColorChooserDeleted}
             />
           ))}
+        </div>
+        <div style={{ display: "flex" }}>
           <button
             onClick={() => setColorList([...colorList, "#FFFFFF"])}
+            style={{ marginRight: 15 }}
             className="nextButton"
           >
-            +
+            Add color
+          </button>
+          <button
+            onClick={onSubmit}
+            type="submit"
+            className="nextButton"
+            style={{ background: colorList.length > 0 ? "#3e82f8" : "#888888" }}
+            disabled={colorList.length > 0 ? false : true}
+          >
+            Next
           </button>
         </div>
-        <button onClick={onSubmit} type="submit" className="nextButton">
-          Next
-        </button>
       </section>
     </Layout>
   );

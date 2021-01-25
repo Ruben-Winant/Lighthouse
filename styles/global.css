@@ -67,6 +67,7 @@ small,
 }
 
 .nextButton {
+  max-height: 10rem;
   background-color: #3E82F8;
   font-weight: bold;
   font-size: 1rem;
