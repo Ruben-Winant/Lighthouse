@@ -1,0 +1,74 @@
+.inputElement{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 10rem;
+    margin-bottom: 2%;
+}
+
+.inputElement input {
+    width: 35%;
+    padding: 5px;
+    margin-left: 2%;
+    margin-right: 2%;
+    appearance: none;
+    border: 1px solid rgb(104, 104, 104);
+    border-radius: 4px;
+}
+
+.selectElement{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 14rem;
+    margin-bottom: 2%;
+}
+
+.selectElement select{
+    width: auto;
+    padding: 5px;
+    margin-left: 2%;
+    margin-right: 2%;
+    appearance: none;
+    border: 1px solid rgb(104, 104, 104);
+    border-radius: 4px;
+}
+
+.inputSentence {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+    align-items: center;
+}
+
+.inputSentence input  {
+    width: 80%;
+    padding: 5px;
+    margin-left: 2%;
+    margin-right: 2%;
+    appearance: none;
+    border: 1px solid rgb(104, 104, 104);
+    border-radius: 4px;
+}
+
+.fontScaleRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fontScaleRow p, .fontScaleRow h1, .fontScaleRow h2, .fontScaleRow h3, .fontScaleRow h4, .fontScaleRow h5 {
+    width: 75%;
+    text-align: left;
+}
+
+.fontScaleRow label {
+    font-size: 0.8rem;
+}
+
+.fontScaleRowLabels {
+    display: flex;
+    flex-direction: column;
+}

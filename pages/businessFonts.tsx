@@ -6,7 +6,7 @@ import { FontType, GoogleFontStyles } from "../interfaces";
 import FontSelector from "../components/FontSelector";
 import { BusinessContext } from "../context/businessContext";
 
-const IndexPage = () => {
+const businessFontsPage = () => {
   const router = useRouter();
   const {
     handleHeaderFont,
@@ -101,7 +101,7 @@ const IndexPage = () => {
     handleHeaderFontBold(headerBold);
     handleSubheaderFontBold(subheaderBold);
     handleBodyFontBold(bodyBold);
-    router.push("/");
+    router.push("/businessTypeScale");
   };
 
   return (
@@ -155,4 +155,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default businessFontsPage;
