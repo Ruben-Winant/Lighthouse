@@ -1,23 +1,33 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { Scales } from "../interfaces";
 import styles from "../styles/businessTypeScale.module.css";
+import { BusinessContext } from "../context/businessContext";
 
 interface props {}
 
 const businessTypescalePage = ({}: props) => {
+  const {
+    handleH1FontSize,
+    handleH2FontSize,
+    handleH3FontSize,
+    handleH4FontSize,
+    handleH5FontSize,
+    handleBodyFontSize,
+    handleSubTextFontSize,
+    handleCaptionFontSize,
+  } = useContext(BusinessContext);
   const [baseFontSize, setBaseFontSize] = useState<number>(16);
   const [scale, setScale] = useState<number>(Scales["Major Third"]);
   const [exampleSentence, setSentence] = useState<string>("Example sentence");
-
-  const [h1, setH1] = useState<string>(baseFontSize.toString());
-  const [h2, setH2] = useState<string>(baseFontSize.toString());
-  const [h3, setH3] = useState<string>(baseFontSize.toString());
-  const [h4, setH4] = useState<string>(baseFontSize.toString());
-  const [h5, setH5] = useState<string>(baseFontSize.toString());
-  const [p, setP] = useState<string>(baseFontSize.toString());
-  const [subText, setSubText] = useState<string>(baseFontSize.toString());
-  const [caption, setCaption] = useState<string>(baseFontSize.toString());
+  const [h1, setH1] = useState<number>(baseFontSize);
+  const [h2, setH2] = useState<number>(baseFontSize);
+  const [h3, setH3] = useState<number>(baseFontSize);
+  const [h4, setH4] = useState<number>(baseFontSize);
+  const [h5, setH5] = useState<number>(baseFontSize);
+  const [p, setP] = useState<number>(baseFontSize);
+  const [subText, setSubText] = useState<number>(baseFontSize);
+  const [caption, setCaption] = useState<number>(baseFontSize);
 
   useEffect(() => {
     setH1((baseFontSize * scale * scale * scale * scale * scale).toFixed(2));
@@ -29,6 +39,17 @@ const businessTypescalePage = ({}: props) => {
     setSubText((baseFontSize / scale).toFixed(2));
     setCaption((baseFontSize / scale / scale).toFixed(2));
   }, [scale, baseFontSize]);
+
+  const onSubmitSizes = () => {
+    handleH1FontSize(h1);
+    handleH2FontSize(h2);
+    handleH3FontSize(h3);
+    handleH4FontSize(h4);
+    handleH5FontSize(h5);
+    handleBodyFontSize(p);
+    handleSubTextFontSize(subText);
+    handleCaptionFontSize(caption);
+  };
 
   return (
     <Layout title="Lighthouse - Brand guide specialist">
@@ -83,81 +104,68 @@ const businessTypescalePage = ({}: props) => {
           <div className={styles.fontScaleRow}>
             <div className={styles.fontScaleRowLabels}>
               <span>H1</span>
-              <label>
-                {h1 + "px | " + (Number.parseFloat(h1) / 16).toFixed(3) + "rem"}
-              </label>
+              <label>{h1 + "px | " + (h1 / 16).toFixed(3) + "rem"}</label>
             </div>
-            <h1 style={{ fontSize: Number.parseFloat(h1) }}>
+            <h1 style={{ fontSize: Number.parseFloat(h1.toString()) }}>
               {exampleSentence}
             </h1>
           </div>
           <div className={styles.fontScaleRow}>
             <div className={styles.fontScaleRowLabels}>
               <span>H2</span>
-              <label>
-                {h2 + "px | " + (Number.parseFloat(h2) / 16).toFixed(3) + "rem"}
-              </label>
+              <label>{h2 + "px | " + (h2 / 16).toFixed(3) + "rem"}</label>
             </div>
-            <h2 style={{ fontSize: Number.parseFloat(h2) }}>
+            <h2 style={{ fontSize: Number.parseFloat(h2.toString()) }}>
               {exampleSentence}
             </h2>
           </div>
           <div className={styles.fontScaleRow}>
             <div className={styles.fontScaleRowLabels}>
               <span>H3</span>
-              <label>
-                {h3 + "px | " + (Number.parseFloat(h3) / 16).toFixed(3) + "rem"}
-              </label>
+              <label>{h3 + "px | " + (h3 / 16).toFixed(3) + "rem"}</label>
             </div>
 
-            <h3 style={{ fontSize: Number.parseFloat(h3) }}>
+            <h3 style={{ fontSize: Number.parseFloat(h3.toString()) }}>
               {exampleSentence}
             </h3>
           </div>
           <div className={styles.fontScaleRow}>
             <div className={styles.fontScaleRowLabels}>
               <span>H4</span>
-              <label>
-                {h4 + "px | " + (Number.parseFloat(h4) / 16).toFixed(3) + "rem"}
-              </label>
+              <label>{h4 + "px | " + (h4 / 16).toFixed(3) + "rem"}</label>
             </div>
-            <h4 style={{ fontSize: Number.parseFloat(h4) }}>
+            <h4 style={{ fontSize: Number.parseFloat(h4.toString()) }}>
               {exampleSentence}
             </h4>
           </div>
           <div className={styles.fontScaleRow}>
             <div className={styles.fontScaleRowLabels}>
               <span>H5</span>
-              <label>
-                {h5 + "px | " + (Number.parseFloat(h5) / 16).toFixed(3) + "rem"}
-              </label>
+              <label>{h5 + "px | " + (h5 / 16).toFixed(3) + "rem"}</label>
             </div>
-            <h5 style={{ fontSize: Number.parseFloat(h5) }}>
+            <h5 style={{ fontSize: Number.parseFloat(h5.toString()) }}>
               {exampleSentence}
             </h5>
           </div>
           <div className={styles.fontScaleRow}>
             <div className={styles.fontScaleRowLabels}>
               <span>Body</span>
-              <label>
-                {p + "px | " + (Number.parseFloat(p) / 16).toFixed(3) + "rem"}
-              </label>
+              <label>{p + "px | " + (p / 16).toFixed(3) + "rem"}</label>
             </div>
 
-            <p style={{ fontSize: Number.parseFloat(p) }}>{exampleSentence}</p>
+            <p style={{ fontSize: Number.parseFloat(p.toString()) }}>
+              {exampleSentence}
+            </p>
           </div>
           <div className={styles.fontScaleRow}>
             <div className={styles.fontScaleRowLabels}>
               <span>Sub text</span>
               <label>
-                {subText +
-                  "px | " +
-                  (Number.parseFloat(subText) / 16).toFixed(3) +
-                  "rem"}
+                {subText + "px | " + (subText / 16).toFixed(3) + "rem"}
               </label>
             </div>
 
-            <p style={{ fontSize: Number.parseFloat(subText) }}>
+            <p style={{ fontSize: Number.parseFloat(subText.toString()) }}>
               {exampleSentence}
             </p>
           </div>
@@ -165,19 +173,18 @@ const businessTypescalePage = ({}: props) => {
             <div className={styles.fontScaleRowLabels}>
               <span>Caption</span>{" "}
               <label>
-                {caption +
-                  "px | " +
-                  (Number.parseFloat(caption) / 16).toFixed(3) +
-                  "rem"}
+                {caption + "px | " + (caption / 16).toFixed(3) + "rem"}
               </label>
             </div>
 
-            <p style={{ fontSize: Number.parseFloat(caption) }}>
+            <p style={{ fontSize: Number.parseFloat(caption.toString()) }}>
               {exampleSentence}
             </p>
           </div>
         </div>
-        <button className="nextButton">Finalize</button>
+        <button className="nextButton" onClick={() => onSubmitSizes()}>
+          Finalize
+        </button>
       </section>
     </Layout>
   );

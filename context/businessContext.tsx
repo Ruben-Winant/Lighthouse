@@ -25,6 +25,14 @@ export interface BusinessContextData {
   businessAppIconVarBlackCustom?: string;
   businessColors: string[];
   businessIcons?: string[];
+  h1FontSize: number;
+  h2FontSize: number;
+  h3FontSize: number;
+  h4FontSize: number;
+  h5FontSize: number;
+  bodyFontSize: number;
+  subTextFontSize: number;
+  captionFontSize: number;
 
   handleBusinessName: (name: string) => void;
   handleBusinessVision: (vision: string) => void;
@@ -49,6 +57,14 @@ export interface BusinessContextData {
   handleBusinessAppIconVarBlackCustom: (src: string) => void;
   handleBusinessColors: (src: string[]) => void;
   handleBusinessIcons: (src: string[]) => void;
+  handleH1FontSize: (size: number) => void;
+  handleH2FontSize: (size: number) => void;
+  handleH3FontSize: (size: number) => void;
+  handleH4FontSize: (size: number) => void;
+  handleH5FontSize: (size: number) => void;
+  handleBodyFontSize: (size: number) => void;
+  handleSubTextFontSize: (size: number) => void;
+  handleCaptionFontSize: (size: number) => void;
 }
 
 //default values
@@ -76,6 +92,14 @@ export const businessContextDefaultValue: BusinessContextData = {
   businessAppIconVarBlackCustom: "",
   businessColors: [],
   businessIcons: [],
+  h1FontSize: 48.83,
+  h2FontSize: 39.06,
+  h3FontSize: 31.25,
+  h4FontSize: 25.0,
+  h5FontSize: 20.0,
+  bodyFontSize: 16.0,
+  subTextFontSize: 12.8,
+  captionFontSize: 10.24,
 
   handleBusinessName: () => null,
   handleBusinessVision: () => null,
@@ -100,6 +124,14 @@ export const businessContextDefaultValue: BusinessContextData = {
   handleBusinessAppIconVarBlackCustom: () => null,
   handleBusinessColors: () => null,
   handleBusinessIcons: () => null,
+  handleH1FontSize: () => null,
+  handleH2FontSize: () => null,
+  handleH3FontSize: () => null,
+  handleH4FontSize: () => null,
+  handleH5FontSize: () => null,
+  handleBodyFontSize: () => null,
+  handleSubTextFontSize: () => null,
+  handleCaptionFontSize: () => null,
 };
 
 //provider
@@ -152,6 +184,14 @@ export function useBusinessContextValue(): BusinessContextData {
   ] = useState<string>("");
   const [businessColors, setBusinessColors] = useState<string[]>([]);
   const [businessIcons, setBusinessIconss] = useState<string[]>([]);
+  const [h1FontSize, setH1FontSize] = useState<number>(0);
+  const [h2FontSize, setH2FontSize] = useState<number>(0);
+  const [h3FontSize, setH3FontSize] = useState<number>(0);
+  const [h4FontSize, setH4FontSize] = useState<number>(0);
+  const [h5FontSize, setH5FontSize] = useState<number>(0);
+  const [bodyFontSize, setBodyFontSize] = useState<number>(0);
+  const [subTextFontSize, setSubTextFontSize] = useState<number>(0);
+  const [captionFontSize, setCaptionFontSize] = useState<number>(0);
 
   //set functions
   const handleBusinessName = (name: string) => {
@@ -224,6 +264,31 @@ export function useBusinessContextValue(): BusinessContextData {
     setBusinessIconss(src);
   };
 
+  const handleH1FontSize = (size: number) => {
+    setH1FontSize(size);
+  };
+  const handleH2FontSize = (size: number) => {
+    setH2FontSize(size);
+  };
+  const handleH3FontSize = (size: number) => {
+    setH3FontSize(size);
+  };
+  const handleH4FontSize = (size: number) => {
+    setH4FontSize(size);
+  };
+  const handleH5FontSize = (size: number) => {
+    setH5FontSize(size);
+  };
+  const handleBodyFontSize = (size: number) => {
+    setBodyFontSize(size);
+  };
+  const handleSubTextFontSize = (size: number) => {
+    setSubTextFontSize(size);
+  };
+  const handleCaptionFontSize = (size: number) => {
+    setCaptionFontSize(size);
+  };
+
   return {
     businessName,
     businessVision,
@@ -248,6 +313,14 @@ export function useBusinessContextValue(): BusinessContextData {
     businessAppIconVarBlackCustom,
     businessColors,
     businessIcons,
+    h1FontSize,
+    h2FontSize,
+    h3FontSize,
+    h4FontSize,
+    h5FontSize,
+    bodyFontSize,
+    subTextFontSize,
+    captionFontSize,
     handleBusinessName,
     handleBusinessVision,
     handleBusinessValues,
@@ -271,5 +344,13 @@ export function useBusinessContextValue(): BusinessContextData {
     handleBusinessAppIconVarBlackCustom,
     handleBusinessColors,
     handleBusinessIcons,
+    handleH1FontSize,
+    handleH2FontSize,
+    handleH3FontSize,
+    handleH4FontSize,
+    handleH5FontSize,
+    handleBodyFontSize,
+    handleSubTextFontSize,
+    handleCaptionFontSize,
   };
 }
