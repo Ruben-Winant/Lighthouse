@@ -30,14 +30,20 @@ const businessTypescalePage = ({}: props) => {
   const [caption, setCaption] = useState<number>(baseFontSize);
 
   useEffect(() => {
-    setH1((baseFontSize * scale * scale * scale * scale * scale).toFixed(2));
-    setH2((baseFontSize * scale * scale * scale * scale).toFixed(2));
-    setH3((baseFontSize * scale * scale * scale).toFixed(2));
-    setH4((baseFontSize * scale * scale).toFixed(2));
-    setH5((baseFontSize * scale).toFixed(2));
-    setP(baseFontSize.toFixed(2));
-    setSubText((baseFontSize / scale).toFixed(2));
-    setCaption((baseFontSize / scale / scale).toFixed(2));
+    setH1(
+      Number.parseInt(
+        (baseFontSize * scale * scale * scale * scale * scale).toFixed(2)
+      )
+    );
+    setH2(
+      Number.parseInt((baseFontSize * scale * scale * scale * scale).toFixed(2))
+    );
+    setH3(Number.parseInt((baseFontSize * scale * scale * scale).toFixed(2)));
+    setH4(Number.parseInt((baseFontSize * scale * scale).toFixed(2)));
+    setH5(Number.parseInt((baseFontSize * scale).toFixed(2)));
+    setP(Number.parseInt(baseFontSize.toFixed(2)));
+    setSubText(Number.parseInt((baseFontSize / scale).toFixed(2)));
+    setCaption(Number.parseInt((baseFontSize / scale / scale).toFixed(2)));
   }, [scale, baseFontSize]);
 
   const onSubmitSizes = () => {
